@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import IngredientList from './IngredientList';
 import IngredientForm from './IngredientForm';
@@ -7,9 +7,9 @@ import Search from './Search';
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([]);
 
-  const filteredIngredientsHandler = (filteredIngredients) => {
+  const filteredIngredientsHandler = useCallback((filteredIngredients) => {
     setIngredients(filteredIngredients);
-  };
+  }, []);
 
   useEffect(() => {
     fetch(process.env.REACT_APP_FIREBASE_URL + 'ingredients.json')
