@@ -11,24 +11,6 @@ const Ingredients = () => {
     setIngredients(filteredIngredients);
   }, []);
 
-  useEffect(() => {
-    fetch(process.env.REACT_APP_FIREBASE_URL + 'ingredients.json')
-      .then((response) => {
-        return response.json();
-      })
-      .then((responseData) => {
-        const loadIngredients = [];
-        for (const key in responseData) {
-          loadIngredients.push({
-            id: key,
-            title: responseData[key].title,
-            amount: responseData[key].amount,
-          });
-        }
-        setIngredients(loadIngredients);
-      });
-  }, []);
-
   const addIngredientHandler = (ingredient) => {
     fetch(process.env.REACT_APP_FIREBASE_URL + 'ingredients.json', {
       method: 'POST',
