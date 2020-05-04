@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import IngredientList from './IngredientList';
 import IngredientForm from './IngredientForm';
@@ -6,6 +6,24 @@ import Search from './Search';
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([]);
+  useEffect(() => {
+    fetch(process.env.REACT_APP_FIREBASE_URL + 'ingredients.json')
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseData) => {
+        const loadIngredients = [];
+        for (const key in responseData) {
+          loadIngredients.push({
+            id: key,
+            title: responseData[key].title,
+            amount: responseData[key].amount,
+          });
+        }
+        setIngredients(loadIngredients);
+      });
+  }, []);
+
   const addIngredientHandler = (ingredient) => {
     fetch(process.env.REACT_APP_FIREBASE_URL + 'ingredients.json', {
       method: 'POST',
