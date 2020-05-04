@@ -28,9 +28,16 @@ const Ingredients = () => {
       });
   };
   const removeIngredientHandler = (ingredientId) => {
-    setIngredients((prevIngredients) =>
-      prevIngredients.filter((ingredient) => ingredient.id !== ingredientId),
-    );
+    fetch(
+      `${process.env.REACT_APP_FIREBASE_URL}ingredients/${ingredientId}.json`,
+      {
+        method: 'DELETE',
+      },
+    ).then((response) => {
+      setIngredients((prevIngredients) =>
+        prevIngredients.filter((ingredient) => ingredient.id !== ingredientId),
+      );
+    });
   };
   return (
     <div className="App">
