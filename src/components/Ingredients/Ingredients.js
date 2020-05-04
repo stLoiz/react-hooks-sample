@@ -6,6 +6,11 @@ import Search from './Search';
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([]);
+
+  const filteredIngredientsHandler = (filteredIngredients) => {
+    setIngredients(filteredIngredients);
+  };
+
   useEffect(() => {
     fetch(process.env.REACT_APP_FIREBASE_URL + 'ingredients.json')
       .then((response) => {
@@ -50,7 +55,7 @@ const Ingredients = () => {
       <IngredientForm onAddIngredient={addIngredientHandler} />
 
       <section>
-        <Search />
+        <Search onLoadIngredients={filteredIngredientsHandler} />
         <IngredientList
           ingredients={ingredients}
           onRemoveItem={removeIngredientHandler}
