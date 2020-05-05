@@ -49,7 +49,7 @@ const Ingredients = () => {
     dispatch({ type: 'SET', ingredients: filteredIngredients });
   }, []);
 
-  const addIngredientHandler = (ingredient) => {
+  const addIngredientHandler = useCallback((ingredient) => {
     // setIsLoading(true);
     dispatchHttp({ type: 'SEND' });
     fetch(process.env.REACT_APP_FIREBASE_URL + 'ingredients.json', {
@@ -72,7 +72,7 @@ const Ingredients = () => {
           ingredient: { id: responseData.name, ...ingredient },
         });
       });
-  };
+  }, []);
   const removeIngredientHandler = (ingredientId) => {
     // setIsLoading(true);
     dispatchHttp({ type: 'SEND' });
