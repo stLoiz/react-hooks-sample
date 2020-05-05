@@ -21,41 +21,43 @@ const ingredientReducer = (currentIngredients, action) => {
 
 const Ingredients = () => {
   const [ingredients, dispatch] = useReducer(ingredientReducer, []);
-  const { isLoading, error, data, sendRequest, reqExtra } = useHttp();
+  const {
+    isLoading,
+    error,
+    data,
+    sendRequest,
+    reqExtra,
+    reqIdentifier,
+  } = useHttp();
 
   useEffect(() => {
-    dispatch({ type: 'DELETE', id: reqExtra });
-  }, [data, reqExtra]);
+    if (!isLoading && !error && reqIdentifier === 'DELETE_INGREDIENT') {
+      dispatch({ type: 'DELETE', id: reqExtra });
+    }
+    if (!isLoading && !error && reqIdentifier === 'ADD_INGREDIENT') {
+      dispatch({
+        type: 'ADD',
+        ingredient: { id: data.name, ...reqExtra },
+      });
+    }
+  }, [data, reqExtra, reqIdentifier, isLoading, error]);
 
   const filteredIngredientsHandler = useCallback((filteredIngredients) => {
-    // setIngredients(filteredIngredients);
     dispatch({ type: 'SET', ingredients: filteredIngredients });
   }, []);
 
-  const addIngredientHandler = useCallback((ingredient) => {
-    // setIsLoading(true);
-    // dispatchHttp({ type: 'SEND' });
-    fetch(process.env.REACT_APP_FIREBASE_URL + 'ingredients.json', {
-      method: 'POST',
-      body: JSON.stringify(ingredient),
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then((response) => {
-        // setIsLoading(false);
-        // dispatchHttp({ type: 'RESPONSE' });
-        //it will return the response with an automatically generated unique id
-        return response.json();
-      })
-      .then((responseData) => {
-        // setIngredients((prevIngredients) => {
-        //   return [...prevIngredients, { id: responseData.name, ...ingredient }];
-        // });
-        dispatch({
-          type: 'ADD',
-          ingredient: { id: responseData.name, ...ingredient },
-        });
-      });
-  }, []);
+  const addIngredientHandler = useCallback(
+    (ingredient) => {
+      sendRequest(
+        `${process.env.REACT_APP_FIREBASE_URL}ingredients.json`,
+        'POST',
+        JSON.stringify(ingredient),
+        ingredient,
+        'ADD_INGREDIENT',
+      );
+    },
+    [sendRequest],
+  );
   const removeIngredientHandler = useCallback(
     (ingredientId) => {
       sendRequest(
@@ -63,6 +65,7 @@ const Ingredients = () => {
         'DELETE',
         null,
         ingredientId,
+        'DELETE_INGREDIENT',
       );
     },
     [sendRequest],
