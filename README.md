@@ -45,7 +45,7 @@ A good explanantion of how the hooks are implemented each time is described in t
 
 4. Conifigure **env.**
  
- Create a file .env and add this:
+ Create a file .env to the root of the project directory and add this:
  
  `REACT_APP_FIREBASE_URL='your/firebase/url'`
  
