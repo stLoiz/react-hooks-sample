@@ -22,12 +22,13 @@ const ingredientReducer = (currentIngredients, action) => {
 const Ingredients = () => {
   const [ingredients, dispatch] = useReducer(ingredientReducer, []);
   const {
-    isLoading,
-    error,
+    clear,
     data,
-    sendRequest,
+    error,
+    isLoading,
     reqExtra,
     reqIdentifier,
+    sendRequest,
   } = useHttp();
 
   useEffect(() => {
@@ -70,9 +71,6 @@ const Ingredients = () => {
     },
     [sendRequest],
   );
-  const clearError = useCallback(() => {
-    // dispatchHttp({ type: 'CLEAR' });
-  }, []);
 
   const ingredientsList = useMemo(() => {
     return (
@@ -84,7 +82,7 @@ const Ingredients = () => {
   }, [ingredients, removeIngredientHandler]);
   return (
     <div className="App">
-      {error && <ErrorModal onClose={clearError}>{error}</ErrorModal>}
+      {error && <ErrorModal onClose={clear}>{error}</ErrorModal>}
       <IngredientForm
         onAddIngredient={addIngredientHandler}
         isLoading={isLoading}
