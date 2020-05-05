@@ -98,9 +98,10 @@ const Ingredients = () => {
         // setError('Something went wrong');
       });
   }, []);
-  const clearError = () => {
+  const clearError = useCallback(() => {
     dispatchHttp({ type: 'CLEAR' });
-  };
+  }, []);
+
   const ingredientsList = useMemo(() => {
     return (
       <IngredientList
