@@ -29,8 +29,9 @@ A good explanantion of how the hooks are implemented each time is described in t
 **You can skip step 3 and just ask me to give you the .env file**
 
 3. Create the database
- I used [firebase] (https://firebase.google.com/?gclid=EAIaIQobChMIpNfBiZqd6QIVlO7tCh3_xQDlEAAYASAAEgImxfD_BwE) to create a dummy database. 
- Click on the above link and create a project. Then configure the database rules under the databse tab.
+ I used [firebase](https://firebase.google.com/?gclid=EAIaIQobChMIpNfBiZqd6QIVlO7tCh3_xQDlEAAYASAAEgImxfD_BwE) to create a dummy database. 
+ Click on the above link and create a project. Then configure the database rules under the databse tab by adding the following json:
+ 
  `{
   "rules": {
     ".read": true,
@@ -44,7 +45,9 @@ A good explanantion of how the hooks are implemented each time is described in t
 4. Conifigure **env.**
  
  Create a file .env and add this:
- REACT_APP_FIREBASE_URL='your/firebase/url'
+ 
+ `REACT_APP_FIREBASE_URL='your/firebase/url'`
+ 
  Get your firebase database url from your firebase project that you created, it is under the database tab.
  
 5. In your project directory run `yarn start`
