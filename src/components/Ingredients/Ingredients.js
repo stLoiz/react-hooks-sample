@@ -1,4 +1,4 @@
-import React, { useReducer, useCallback } from 'react';
+import React, { useReducer, useCallback, useMemo } from 'react';
 
 import ErrorModal from '../UI/ErrorModal';
 import IngredientList from './IngredientList';
@@ -73,7 +73,7 @@ const Ingredients = () => {
         });
       });
   }, []);
-  const removeIngredientHandler = (ingredientId) => {
+  const removeIngredientHandler = useCallback((ingredientId) => {
     // setIsLoading(true);
     dispatchHttp({ type: 'SEND' });
     fetch(
@@ -97,10 +97,18 @@ const Ingredients = () => {
         // setIsLoading(false);
         // setError('Something went wrong');
       });
-  };
+  }, []);
   const clearError = () => {
     dispatchHttp({ type: 'CLEAR' });
   };
+  const ingredientsList = useMemo(() => {
+    return (
+      <IngredientList
+        ingredients={ingredients}
+        onRemoveItem={removeIngredientHandler}
+      />
+    );
+  }, [ingredients, removeIngredientHandler]);
   return (
     <div className="App">
       {httpState.error && (
@@ -113,10 +121,7 @@ const Ingredients = () => {
 
       <section>
         <Search onLoadIngredients={filteredIngredientsHandler} />
-        <IngredientList
-          ingredients={ingredients}
-          onRemoveItem={removeIngredientHandler}
-        />
+        {ingredientsList}
       </section>
     </div>
   );
