@@ -11,8 +11,8 @@ The hooks that the project is using are:
 - useState()
 - useEffect()
 - useMemo()
-- useReducer
-- useCallBack
+- useReducer()
+- useCallBack()
 - useContext()
 
 Also custom hook is created which is responsible to handle the http requests and have the useEffect() to handle the response of the requests
