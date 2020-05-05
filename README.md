@@ -29,8 +29,9 @@ A good explanantion of how the hooks are implemented each time is described in t
 **You can skip step 3 and just ask me to give you the .env file**
 
 3. Create the database
- I used [firebase](https://firebase.google.com/?gclid=EAIaIQobChMIpNfBiZqd6QIVlO7tCh3_xQDlEAAYASAAEgImxfD_BwE) to create a dummy database. 
- Click on the above link and create a project. Then configure the database rules under the databse tab by adding the following json:
+ I used [firebase](https://firebase.google.com/?gclid=EAIaIQobChMIpNfBiZqd6QIVlO7tCh3_xQDlEAAYASAAEgImxfD_BwE) to create a dummy database. You can do the same as it is really quick:
+ 
+ Click on this [link](https://firebase.google.com/?gclid=EAIaIQobChMIpNfBiZqd6QIVlO7tCh3_xQDlEAAYASAAEgImxfD_BwE) and create a project. Then configure the database rules under the database tab by adding the following json:
  
  `{
   "rules": {
