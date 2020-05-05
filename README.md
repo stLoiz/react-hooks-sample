@@ -15,9 +15,9 @@ The hooks that the project is using are:
 - useCallBack()
 - useContext()
 
-Also custom hook is created which is responsible to handle the http requests and have the useEffect() to handle the response of the requests
+Also a custom hook is created which is responsible to handle the http requests and have the useEffect() to handle the response of the requests.
 
-A good explanantion of how the hooks are implemented is described in the commits.
+A good explanantion of how the hooks are implemented each time is described in the commits.
 
 ## To run the project
 
@@ -36,8 +36,8 @@ A good explanantion of how the hooks are implemented is described in the commits
     ".read": true,
     ".write": true,
       "ingredients": {
-				".indexOn" : ["title"]
-			}
+	".indexOn" : ["title"]
+	}
   }
 }`
 
