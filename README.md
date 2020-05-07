@@ -26,7 +26,6 @@ A good explanantion of how the hooks are implemented each time is described in t
 2. In the project directory:
   - run npm install
 
-**You can skip step 3 and just ask me to give you the .env file**
 
 3. Create the database
  I used [firebase](https://firebase.google.com/?gclid=EAIaIQobChMIpNfBiZqd6QIVlO7tCh3_xQDlEAAYASAAEgImxfD_BwE) to create a dummy database. You can do the same as it is really quick:
