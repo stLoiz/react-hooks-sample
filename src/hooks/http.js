@@ -44,8 +44,8 @@ const useHttp = () => {
     (url, method, body, reqExtra, reqIdentifier) => {
       dispatchHttp({ type: 'SEND', identifier: reqIdentifier });
       fetch(url, {
-        method: method,
-        body: body,
+        method,
+        body,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -56,7 +56,7 @@ const useHttp = () => {
         .then((responseData) => {
           dispatchHttp({
             type: 'RESPONSE',
-            responseData: responseData,
+            responseData,
             extra: reqExtra,
           });
         })
@@ -70,10 +70,10 @@ const useHttp = () => {
     isLoading: httpState.loading,
     error: httpState.error,
     data: httpState.data,
-    sendRequest: sendRequest,
+    sendRequest,
     reqExtra: httpState.extra,
     reqIdentifier: httpState.identifier,
-    clear: clear,
+    clear,
   };
 };
 

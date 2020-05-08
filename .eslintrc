@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier"],
+  "extends": ["airbnb", "plugin:prettier/recommended"],
 
   "plugins": ["react-hooks", "prettier"],
 
@@ -8,5 +8,11 @@
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
+  },
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "fetch": true
   }
 }
