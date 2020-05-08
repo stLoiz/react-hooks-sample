@@ -2,9 +2,9 @@ import React, { useReducer, useCallback, useMemo, useEffect } from 'react';
 
 import useHttp from '../../hooks/http';
 import ErrorModal from '../UI/ErrorModal';
-import IngredientList from './IngredientList';
-import IngredientForm from './IngredientForm';
-import Search from './Search';
+import IngredientList from './components/IngredientList/IngredientList';
+import IngredientForm from './components/IngredientsForm/IngredientForm';
+import Search from './components/Search/Search';
 
 const ingredientReducer = (currentIngredients, action) => {
   switch (action.type) {

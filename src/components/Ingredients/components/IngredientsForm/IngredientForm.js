@@ -1,9 +1,11 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import Card from '../UI/Card';
-import LoadingIndicator from '../UI/LoadingIndicator';
+import Card from '../../../UI/Card';
+import LoadingIndicator from '../../../UI/LoadingIndicator';
 
 import './IngredientForm.css';
+
 const IngredientForm = React.memo(({ onAddIngredient, isLoading }) => {
   const [inputTitle, setInputTitle] = useState('');
   const [inputAmount, setInputAmount] = useState('');
@@ -53,4 +55,15 @@ const IngredientForm = React.memo(({ onAddIngredient, isLoading }) => {
   );
 });
 
+IngredientForm.propTypes = {
+  /*
+   * function to store the ingredient
+   */
+  onAddIngredient: PropTypes.func.isRequired,
+
+  /*
+   * bool to show the LoadingIndicator if true
+   */
+  isLoading: PropTypes.bool.isRequired,
+};
 export default IngredientForm;
