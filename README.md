@@ -1,11 +1,12 @@
 # Project Decription
 
-It is a small project where the basic functionalities are:
+It is a small demo project to show how react hooks are working and how they can be implemented.<br/>
+You can checkout the project [here](https://www.stellaloizou.eu/react-hooks-sample/)
+
+The basic functionalities are:
 - the user can store fruits and the amount of the fruits in database, 
 - the user can remove the fruits from database
 - the user can search and find the fruits that are stored in database
-
-The goal of the project is to show how react hooks are working and how can be implemented.
 
 The hooks that the project is using are:
 - useState()
