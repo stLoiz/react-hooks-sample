@@ -17,6 +17,12 @@ const IngredientForm = React.memo(({ onAddIngredient, isLoading }) => {
 
   return (
     <section className="ingredient-form">
+      <div>
+        <p>This is a demo project build in React Hooks.</p>
+        <p>
+          You can add, delete ingredients and search for stored ingredients.
+        </p>
+      </div>
       <Card>
         <form onSubmit={submitHandler}>
           <div className="form-control">

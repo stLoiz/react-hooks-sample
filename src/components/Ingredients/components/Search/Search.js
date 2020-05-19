@@ -50,7 +50,7 @@ const Search = React.memo(({ onLoadIngredients }) => {
       <Card>
         <div className="search-input">
           <label htmlFor="search">
-            Filter by Title
+            Filter by Title &nbsp;
             {isLoading && <span>Loading..</span>}
             <input
               ref={inputRef}
