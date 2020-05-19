@@ -1,6 +1,6 @@
 # Project Decription
 
-It is a small demo project to show how react hooks are working and how they can be implemented.
+It is a small demo project to show how react hooks are working and how they can be implemented.<br/>
 You can checkout the project [here](https://www.stellaloizou.eu/react-hooks-sample/)
 
 The basic functionalities are:
